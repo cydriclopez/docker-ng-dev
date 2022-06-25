@@ -143,10 +143,10 @@ This is a one-liner command that has been separated with the bash continuing cha
 ### Table 1. Your host pc to Docker mappings table
 |    | Your host pc | Docker |
 | ----------- | --- | ----------- |
-| ng serve port ( -p ) | 4200 | 4200 |
-| ng test port ( -p ) | 9876 | 9876 |
-| volume folder mapping ( -v ) | /home/$USER/Projects/ng | /home/node/ng |
-| working folder ( -w ) | ( /home/$USER/Projects/ng ) | /home/node/ng |
+| ng serve port (-p) | 4200 | 4200 |
+| ng test port (-p) | 9876 | 9876 |
+| volume folder mapping (-v) | /home/$USER/Projects/ng | /home/node/ng |
+| working folder (-w) | (/home/$USER/Projects/ng) | /home/node/ng |
 | repository name |    | angular |
 | executable in the repository |    | /bin/sh |
 
