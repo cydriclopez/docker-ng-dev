@@ -1,6 +1,11 @@
 # angular.dockerfile
 # Dockerize your Angular dev environment
 
+# So you won't be typing "sudo docker" a lot, suggested
+# Linux Docker post install commands:
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
+
 # 1. After git cloning this project type: cd docker-ng-dev/docker
 # 2. Build the Angular image using the command:
 # docker build -f angular.dockerfile -t angular .

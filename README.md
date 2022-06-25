@@ -3,6 +3,8 @@
 
 ## Dockerize your Angular dev environment
 
+>This tutorial requires some knowledge in Linux, Docker, and Git.
+
 VMs and containers have been [around for a while](https://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016). They predate [Docker](https://www.docker.com/). There are other Docker [alternative projects](https://www.containiq.com/post/docker-alternatives). Most are [OCI compliant](https://opencontainers.org/) projects.
 
 Early on, [Linux](https://www.linuxfoundation.org/) got to have the foundational code pieces in namespace, cgroup, unionfs, and chroot to make VMs and containers possible. In Linux there is no need to use a VM to run Docker. [Docker Compose](https://docs.docker.com/compose/) is a tool for conveniently wiring together multi-container Docker applications using a YAML text file. [LXD](https://linuxcontainers.org/), [Kubernetes](https://kubernetes.io/), [Swarm](https://docs.docker.com/engine/swarm/), and etc. extend containers into nodes spanning multiple servers. This area in IT is a fast moving train that is quite fun to ride.
@@ -31,6 +33,11 @@ The docker file ***docker/angular.dockerfile*** is fully commented.
 ```dockerfile
 # angular.dockerfile
 # Dockerize your Angular dev environment
+
+# So you won't be typing "sudo docker" a lot, suggested
+# Linux Docker post install commands:
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
 
 # 1. After git cloning this project type: cd docker-ng-dev/docker
 # 2. Build the Angular image using the command:
@@ -69,6 +76,13 @@ RUN npm install -g @angular/cli
 <br/>
 <ins>You DO NOT type the colon ":" as part of the command.***</ins>
 <br/>
+
+So you won't be typing ***sudo docker*** a lot, I suggest you run the following Linux Docker post install commands:
+```
+:sudo groupadd docker
+:sudo usermod -aG docker $USER
+```
+
 ### 1. Git clone this project in a working folder
 ```
 :git clone https://github.com/cydriclopez/docker-ng-dev.git
