@@ -72,16 +72,36 @@ FROM node:14.18-alpine
 RUN npm install -g @angular/cli
 
 ```
-<ins>***Note that in the following command examples the colon ":" is part of my command prompt.</ins>
+
+### Some preliminaries for clarity
+
+<ins>***Note that in the following command examples the colon ":" is part of my command-line prompt.</ins>
 <br/>
 <ins>You DO NOT type the colon ":" as part of the command.***</ins>
 <br/>
 
-So you won't be typing ***sudo docker*** a lot, I suggest you run the following Linux Docker post install commands:
+Note that in Linux you can customize your command-line prompt. In my ***~/.bashrc*** file I have entered the following statement to customize my command-line prompt using the ***PS1*** environment variable.
+
+```bash
+export PS1=$PS1'\n:'
 ```
+
+This statement in my ***~/.bashrc*** turns my command-line prompt into the following below. **This way no matter how long my current path is, my prompt starts at the leftmost part of my screen after the colon ":" character.**
+
+```bash
+user1@penguin:~/Projects/ng/my-app/node_modules/@angular/cli/src/commands/update/schematic$
+:
+```
+
+So that you won't be typing ***sudo docker*** a lot, I suggest you run the following Linux Docker post install commands:
+
+```
+user1@penguin:~$
 :sudo groupadd docker
 :sudo usermod -aG docker $USER
 ```
+
+Ok now that we have some clarity, let's get right to it. 😊
 
 ### 1. Git clone this project in a working folder
 ```
@@ -125,13 +145,15 @@ In this project folder you can have several subfolders to house your multiple An
 :pwd
 /home/user1/Projects/ng
 :ll
-drwxr-xr-x 1 user1 user1   366 May 28 11:57 advert-primeng
-drwx--x--x 1 user1 user1   228 Dec 12  2021 go-post-json-passthru
-drwx--x--x 1 user1 user1   322 May 22 15:46 material-cart
-drwxr-xr-x 1 user1 user1   366 Jun 23 22:12 treemodule-json
-drwx--x--x 1 user1 user1   332 Aug 13  2021 ultima-try
+drwxr-x--x 1 user1 user1   366 May 28 11:57 advert-primeng
+drwxr-x--x 1 user1 user1   228 Dec 12  2021 go-post-json-passthru
+drwxr-x--x 1 user1 user1   322 May 22 15:46 material-cart
+drwxr-x--x 1 user1 user1   366 Jun 23 22:12 treemodule-json
+drwxr-x--x 1 user1 user1   332 Aug 13  2021 ultima-try
 ```
+
 ### 4. Add an alias in ~/.bashrc by adding the following lines:
+
 ```bash
 alias angular='docker run -it --rm \
 -p 4200:4200 -p 9876:9876 \
@@ -186,28 +208,147 @@ Note that the command-line prompt has changed. This signifies that you have left
 
 Docker and other alternative systems have addressed this vulnerability by running the container in rootless mode.
 
+### Create the Angular tutorial demo project application
+
 At this point the alias command ***angular*** should now bring you inside the ***Angular-Node*** Docker container. Right here you can now follow the Angular tutorial and [create the example project](https://angular.io/guide/setup-local#create-a-workspace-and-initial-application).
 
 After following the Angular example project you will then have a working demo app.
-```
+```bash
+user1@penguin:~$
 :angular
 /home/node/ng # ng new my-app
+...
 [truncated Angular messages]
+...
 /home/node/ng # cd my-app
 /home/node/ng/my-app # ng serve --host 0.0.0.0
+
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   1.70 MB |
+polyfills.js          | polyfills     | 296.95 kB |
+styles.css, styles.js | styles        | 173.22 kB |
+main.js               | main          |  47.66 kB |
+runtime.js            | runtime       |   6.51 kB |
+
+                      | Initial Total |   2.21 MB
+
+Build at: 2022-06-26T17:37:24.470Z - Hash: 7944aecba1a9ca2a - Time: 6631ms
+
+** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **
+
+✔ Compiled successfully.
 ```
-The only exception is that to serve your app use the command: ***ng serve --host 0.0.0.0***
+The only exception here is that to serve your app use the command: ***ng serve --host 0.0.0.0***
 
 Note that you add the ***--host 0.0.0.0*** parameter. This tells Angular to accept all incoming IP address. This is because your localhost PC has a different IP address than the Angular-Node Docker container. By default the Angular dev web server only allows connection from its own IP address.
 
-## IMPORTANT NOTE:
+## VERY IMPORTANT NOTE:
 
 Code generated from inside the container will be owned by the root account which will make them read-only from your code editor. This can be corrected by running the command:
 ```
 :sudo chown -R $USER:$USER <generated-code-folder-name>
 ```
-This command will let you be the owner of the code generated from inside the Angular-Node Docker container. Thus making them editable in your editor. You will have to issue this command for every component, service, or any code created from inside the Docker container.
+
+***chown*** is the "change of ownership" command in Linux.
+
+This command will let you be the owner of the code generated from inside the Angular-Node Docker container. Thus making them editable in your editor.
+
+### Chown command example
+
+While the Angular demo app is running press ***Control-c*** to get you back into the command-line prompt.
+
+```bash
+...
+[truncated Angular messages]
+...
+                      | Initial Total |   2.21 MB
+
+Build at: 2022-06-26T17:37:24.470Z - Hash: 7944aecba1a9ca2a - Time: 6631ms
+
+** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **
+
+✔ Compiled successfully.
+^C/home/node/ng/my-app #
+/home/node/ng/my-app #
+```
+
+The ***^C*** above shows where you have pressed ***Control-c*** to interrupt the running Angular demo app.
+
+After you press ***Control-c*** to get you back into the command-line prompt, type ***exit*** to exit out of the Angular-Node Docker container as shown below.
+
+Right at this point you are back into your host PC as signified be the prompt: ***user1@penguin:~$***
+
+Then type ***cd ~/Projects/ng/my-app*** to go to the ***ng/my-app*** Angular generated demo app project folder.
+
+Look at the ownership of the files below. They are all owned by the user:group ***root:root***. All of the files in this folder are read-only to you. You will not be able to modify them with your code editor.
+
+```bash
+/home/node/ng/my-app # exit
+user1@penguin:~$
+:cd ~/Projects/ng/my-app
+user1@penguin:~/Projects/ng/my-app$
+:pwd
+/home/user1/Projects/ng/my-app
+user1@penguin:~/Projects/ng/my-app$
+:ll
+total 376
+-rw-r--r-- 1 root root   3039 Jun 24 17:24 angular.json
+-rw-r--r-- 1 root root   1423 Jun 24 17:24 karma.conf.js
+drwxr-xr-x 1 root root  14602 Jun 24 17:26 node_modules
+-rw-r--r-- 1 root root   1069 Jun 24 17:24 package.json
+-rw-r--r-- 1 root root 355383 Jun 24 17:25 package-lock.json
+-rw-r--r-- 1 root root   1051 Jun 24 17:24 README.md
+drwxr-xr-x 1 root root    156 Jun 24 17:24 src
+-rw-r--r-- 1 root root    287 Jun 24 17:24 tsconfig.app.json
+-rw-r--r-- 1 root root    863 Jun 24 17:24 tsconfig.json
+-rw-r--r-- 1 root root    333 Jun 24 17:24 tsconfig.spec.json
+user1@penguin:~/Projects/ng/my-app$
+:
+```
+
+To change this situation you will have to go back one folder up by typing ***cd ..***
+
+```bash
+user1@penguin:~/Projects/ng/my-app$
+:cd ..
+user1@penguin:~/Projects/ng$
+:pwd
+/home/user1/Projects/ng
+:ll
+drwxr-x--x 1 user1 user1   366 May 28 11:57 advert-primeng
+drwxr-x--x 1 user1 user1   228 Dec 12  2021 go-post-json-passthru
+drwxr-x--x 1 user1 user1   322 May 22 15:46 material-cart
+drwxr-x--x 1  root  root   358 Jun 24 17:26 my-app
+drwxr-x--x 1 user1 user1   366 Jun 23 22:12 treemodule-json
+drwxr-x--x 1 user1 user1   332 Aug 13  2021 ultima-try
+```
+Note that in the listing above our newly generated Angular demo app ***my-app*** is owned by the ***root*** account. The files in this folder will be read-only and cannot be altered using our code editor.
+
+Right here we will enter the ***chown*** command as shown below. We prefix our command with ***sudo*** to momentarily give ourselves ***root*** permission superpowers **(sudo = "superpower do")** just for the life of the ***chown*** command. The ***-R*** option makes ***chown*** recurse thru all the sub-folders.
+
+In Linux ***root*** ownership has the highest permission level so will require ***sudo*** to alter. You can only use ***sudo*** if you belong to the ***sudo*** group.
+
+```bash
+user1@penguin:~/Projects/ng$
+:sudo chown -R $USER:$USER my-app
+user1@penguin:~/Projects/ng$
+:ll
+drwxr-x--x 1 user1 user1   366 May 28 11:57 advert-primeng
+drwxr-x--x 1 user1 user1   228 Dec 12  2021 go-post-json-passthru
+drwxr-x--x 1 user1 user1   322 May 22 15:46 material-cart
+drwxr-x--x 1 user1 user1   358 Jun 24 17:26 my-app
+drwxr-x--x 1 user1 user1   366 Jun 23 22:12 treemodule-json
+drwxr-x--x 1 user1 user1   332 Aug 13  2021 ultima-try
+```
+
+At this point all of the files in the Angular demo app ***my-app*** will be available for editing in our favorite code editor.
+
+You will have to issue this command again, in your host PC main Angular project folder ***~/Projects/ng*** after you create components, services, or any code you generate from inside the Angular-Node Docker container.
 
 For convenience you can use your terminal's reverse history search feature by pressing Control-r and typing ***chown*** and then repeatedly press Control-r again to look for the most appropriate ***chown*** command you typed before. Once you got it just modify the folder name then press enter. Control-c to start over.
+
+Happy coding! 😊
 
 ---
