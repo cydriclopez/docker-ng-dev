@@ -19,7 +19,7 @@ This tutorial is mostly about creating the Angular docker image and adding an al
 
 Docker is also an application development technology. These days it makes a lot of sense to install software dev tools into a Docker image. The nice thing about it is that when a new version of the tool comes out, you can just create an image of this new version.
 
-The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.
+**The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.**
 
 It is now recommended to use the --mount option to mount local host folders into a Docker container but I find it requiring more parameters. The --volume or -v option is just simpler. In the official documentation it says that there is [no plan to deprecate](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag) --volume or -v option.
 
