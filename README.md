@@ -13,7 +13,9 @@ Docker is an application deployment technology. With Docker you can choose a pre
 
 I recommend <ins>***using only Docker Official Images***</ins> to keep away from malicious codes and vulnerabilities. You can also use images from companies you trust.
 
-The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download.
+The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download. This is the docker hub page for [Node](https://hub.docker.com/_/node). Node is the foundation code to run Angular.
+
+This tutorial is mostly about creating the Angular docker image and adding an alias command in the ***~/.bashrc*** file. It is actually a 2 step process I stretched into 5 for clarity. I would like to think it is a lot simpler than painstakingly manually [installing Node from here](https://github.com/nodejs/help/wiki/Installation), followed by [installing Angular from here](https://angular.io/guide/setup-local#install-the-angular-cli).
 
 Docker is also an application development technology. These days it makes a lot of sense to install software dev tools into a Docker image. The nice thing about it is that when a new version of the tool comes out, you can just create an image of this new version.
 
