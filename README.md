@@ -3,7 +3,7 @@
 
 ## Dockerize your Angular dev environment
 
->This tutorial requires some knowledge in Linux, Docker, and Git.
+>This tutorial requires some knowledge in Linux, Docker, Git, and Angular.
 
 VMs and containers have been [around for a while](https://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016). They predate [Docker](https://www.docker.com/). There are other Docker [alternative projects](https://www.containiq.com/post/docker-alternatives). Most are [OCI compliant](https://opencontainers.org/) projects.
 
