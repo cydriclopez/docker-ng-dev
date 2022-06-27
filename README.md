@@ -13,13 +13,15 @@ Docker is an application deployment technology. With Docker you can choose a pre
 
 I recommend <ins>***using only Docker Official Images***</ins> to keep away from malicious codes and vulnerabilities. You can also use images from companies you trust.
 
+The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download.
+
 Docker is also an application development technology. These days it makes a lot of sense to install software dev tools into a Docker image. The nice thing about it is that when a new version of the tool comes out, you can just create an image of this new version.
 
 The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.
 
 It is now recommended to use the --mount option to mount local host folders into a Docker container but I find it requiring more parameters. The --volume or -v option is just simpler. In the official documentation it says that there is [no plan to deprecate](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag) --volume or -v option.
 
-The way I prefer to use Docker for development purposes is to keep the image lean. To make it work takes 5 steps:
+The way I prefer to use Docker for Angular development purposes is to keep the image lean. To make it work takes 5 steps:
 1. Git clone this project, then type ***cd docker-ng-dev/docker***
 2. Build the image using the Dockerfile ***angular.dockerfile***
 3. Create your main Angular project folder with ***mkdir -p ~/Projects/ng***
