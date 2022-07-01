@@ -110,6 +110,7 @@ Ok now that we have some clarity, let's get right to it. 😊
 ---
 
 ### 1. Git clone this project in a working folder
+
 ```
 :git clone https://github.com/cydriclopez/docker-ng-dev.git
 :cd docker-ng-dev/docker
@@ -118,6 +119,7 @@ Ok now that we have some clarity, let's get right to it. 😊
 ### 2. Build the Angular image
 
 Once inside the ***docker-ng-dev/docker*** folder build the Angular image using the command:
+
 ```
 :docker build -f angular.dockerfile -t angular .
 ```
@@ -139,10 +141,12 @@ That ***postgres*** image entry is the subject of the next tutorial [***Dockeriz
 
 In this example the main Angular project folder is ***~/Projects/ng***
 So we type:
+
 ```
 :mkdir -p ~/Projects/ng
 ```
 In this project folder you can have several subfolders to house your multiple Angular projects. This is a sample listing of projects in my Angular project folder.
+
 ```
 :pwd
 /home/user1/Projects/ng
@@ -162,7 +166,12 @@ alias angular='docker run -it --rm \
 -v /home/$USER/Projects/ng:/home/node/ng \
 -w /home/node/ng angular /bin/sh'
 ```
-This is a one-liner command that has been separated with the bash continuing character "\\" to make it easier to read. This alias command, with its parameters, can be clarified by the following table.
+
+This is a one-liner command that has been separated with the bash continuing character "\\" to make it easier to read.
+
+The ***-it*** option keeps ***docker run*** interactive. The ***--rm*** option automatically removes the container when it exits. This means that when inside the Docker container command prompt terminal ***/bin/sh***, typing ***exit*** ends the terminal session then Docker removes the running container from memory. The angular image remains on disk ready to run again but its running instance which is the container was effectively cleared from memory.
+
+This alias that runs the ***docker run*** command has more parameters that can be clarified by the following table.
 
 ### Table 1. Your host pc to Docker mappings table
 |    | Your host pc | Docker |
@@ -174,20 +183,22 @@ This is a one-liner command that has been separated with the bash continuing cha
 | repository name |    | angular |
 | executable in the repository |    | /bin/sh |
 
-The ***-it*** option keeps ***docker run*** interactive. The ***--rm*** option automatically removes the container when it exits. This means that when inside the Docker container command prompt terminal ***/bin/sh***, typing ***exit*** ends the terminal session then Docker removes the running container from memory. The angular image remains on disk ready to run again but its running instance which is the container was effectively cleared from memory.
-
 ### Use your editor to add the alias command "angular"
 Use your code editor to edit your ***~/.bashrc*** file. In my case I enter the command:
+
 ```
 :code ~/.bashrc
 ```
+
 Then proceed to cut-and-paste the following lines into your editor:
+
 ```bash
 alias angular='docker run -it --rm \
 -p 4200:4200 -p 9876:9876 \
 -v /home/$USER/Projects/ng:/home/node/ng \
 -w /home/node/ng angular /bin/sh'
 ```
+
 This is how it looks like in my code editor:<br/>
 <img src="assets/images/vscode_add_alias.png" width="650"/>
 
@@ -204,10 +215,12 @@ This command starts with a period "." <ins>**followed by a space**</ins> then **
 Remember, as I mentioned before, the colon ":" is part of the command line prompt. You do not type it.
 
 After your ***~/.bashrc*** reloads, then the command ***angular*** will be available. Try enter this ***angular*** command.
+
 ```
 :angular
 /home/node/ng #
 ```
+
 Note that the command-line prompt has changed. This signifies that you have left your localhost PC environment and you are now inside the Angular-Node Docker container. ***In Linux the hashtag or pound character prompt signifies you have root superpowers so be very careful. You have complete absolute control within that session. Mistakes can be damaging.*** You are in a virtual container session but you can affect the host system files.
 
 Docker and other alternative systems have addressed this vulnerability by running the container in rootless mode.
@@ -217,6 +230,7 @@ Docker and other alternative systems have addressed this vulnerability by runnin
 At this point the alias command ***angular*** should now bring you inside the ***Angular-Node*** Docker container. Right here you can now follow the Angular tutorial and [create the example project](https://angular.io/guide/setup-local#create-a-workspace-and-initial-application).
 
 After following the Angular example project you will then have a working demo app.
+
 ```bash
 user1@penguin:~$
 :angular
@@ -244,6 +258,7 @@ Build at: 2022-06-26T17:37:24.470Z - Hash: 7944aecba1a9ca2a - Time: 6631ms
 
 ✔ Compiled successfully.
 ```
+
 The only exception here is that to serve your app use the command: ***ng serve --host 0.0.0.0***
 
 Note that you add the ***--host 0.0.0.0*** parameter. This tells Angular to accept all incoming IP address. This is because your localhost PC has a different IP address than the Angular-Node Docker container. By default the Angular dev web server only allows connection from its own IP address.
@@ -251,6 +266,7 @@ Note that you add the ***--host 0.0.0.0*** parameter. This tells Angular to acce
 ## VERY IMPORTANT NOTE:
 
 Code generated from inside the container will be owned by the root account which will make them read-only from your code editor. This can be corrected by running the command:
+
 ```
 :sudo chown -R $USER:$USER <generated-code-folder-name>
 ```
@@ -328,6 +344,7 @@ drwxr-x--x 1  root  root   358 Jun 24 17:26 my-app
 drwxr-x--x 1 user1 user1   366 Jun 23 22:12 treemodule-json
 drwxr-x--x 1 user1 user1   332 Aug 13  2021 ultima-try
 ```
+
 Note that in the listing above our newly generated Angular demo app ***my-app*** is owned by the ***root*** account. The files in this folder will be read-only and cannot be altered using our code editor.
 
 Right here we will enter the ***chown*** command as shown below. We prefix our command with ***sudo*** to momentarily give ourselves ***root*** permission superpowers **(sudo = "superpower do")** just for the life of the ***chown*** command. The ***-R*** option makes ***chown*** recurse thru all the sub-folders.
