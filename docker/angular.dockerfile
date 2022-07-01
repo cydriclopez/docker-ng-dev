@@ -10,7 +10,8 @@
 # 2. Build the Angular image using the command:
 # docker build -f angular.dockerfile -t angular .
 
-# 3. Create your main Angular project working folder.
+# 3. Create your main Angular project working folder. This folder can
+# be anywhere as long as it jives with the alias command in the next step.
 # You can create project sub-folders in this Angular project folder.
 # mkdir -p ~/Projects/ng
 
