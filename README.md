@@ -21,8 +21,6 @@ Docker is also an application development technology. These days it makes a lot 
 
 **The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.**
 
-It is now recommended to use the --mount option to mount local host folders into a Docker container but I find it requiring more parameters. The --volume or -v option is just simpler. In the official documentation it says that there is [no plan to deprecate](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag) --volume or -v option.
-
 The way I prefer to use Docker for Angular development purposes is to keep the image lean. To make it work takes 5 steps:
 1. Git clone this project, then type ***cd docker-ng-dev/docker***
 2. Build the image using the Dockerfile ***angular.dockerfile***
@@ -77,6 +75,8 @@ RUN npm install -g @angular/cli
 
 ```
 
+---
+
 ### Some preliminaries for clarity
 
 <ins>***Note that in the following command examples the colon ":" is part of my command-line prompt.</ins>
@@ -107,13 +107,11 @@ user1@penguin:~$
 
 Ok now that we have some clarity, let's get right to it. 😊
 
+---
+
 ### 1. Git clone this project in a working folder
 ```
 :git clone https://github.com/cydriclopez/docker-ng-dev.git
-```
-
-Or you can download and expand the [zip file](https://github.com/cydriclopez/docker-ng-dev/archive/refs/heads/main.zip). Then enter the command:
-```
 :cd docker-ng-dev/docker
 ```
 
@@ -134,7 +132,7 @@ node         14.18-alpine   194cd0d85d8a   5 months ago   118MB
 ```
 Note that the ***angular*** and ***node*** entries were added after the ***docker build*** command.
 
-That ***postgres*** image entry is the subject of the next tutorial ***Dockerizing your Postgresql dev environment***.
+That ***postgres*** image entry is the subject of the next tutorial [***Dockerizing your Postgresql dev environment***](https://github.com/cydriclopez/docker-pg-dev).
 
 
 ### 3. Create your main Angular project folder
@@ -191,15 +189,17 @@ alias angular='docker run -it --rm \
 -w /home/node/ng angular /bin/sh'
 ```
 This is how it looks like in my code editor:<br/>
-<img src="assets/images/vscode_add_alias.png" width="550"/>
+<img src="assets/images/vscode_add_alias.png" width="650"/>
 
 ### 5. Save and reload your ~/.bashrc file
 
 After you have inserted the alias command in your ***~/.bashrc*** file save it, and then reload it using the command:
+
 ```
 :. ~/.bashrc
 ```
-This command starts with a period "." followed by a space then ***~/bashrc***
+
+This command starts with a period "." <ins>**followed by a space**</ins> then ***~/bashrc***
 
 Remember, as I mentioned before, the colon ":" is part of the command line prompt. You do not type it.
 
