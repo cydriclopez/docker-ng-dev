@@ -298,7 +298,7 @@ Note that you add the ***--host 0.0.0.0*** parameter. This tells Angular to acce
 
 ## VERY IMPORTANT NOTE:
 
-Code generated from inside the container will be owned by the root account which will make them read-only from your code editor. This can be corrected by running the command:
+Code generated from inside the container will be owned by the root account which will make them read-only in your code editor. This can be corrected by running the ***sudo chown*** command:
 
 ```
 :sudo chown -R $USER:$USER <generated-code-folder-name>
@@ -380,9 +380,9 @@ drwxr-x--x 1 user1 user1   332 Aug 13  2021 ultima-try
 
 Note that in the listing above our newly generated Angular demo app ***my-app*** is owned by the ***root*** account. The files in this folder will be read-only and cannot be altered using our code editor.
 
-Right here we will enter the ***chown*** command as shown below. We prefix our command with ***sudo*** to momentarily give ourselves ***root*** permission superpowers **(sudo = "superpower do")** just for the life of the ***chown*** command. The ***-R*** option makes ***chown*** recurse thru all the sub-folders.
+Right here we will enter the ***chown*** command as shown below. We prefix our command with ***sudo*** to momentarily give ourselves ***superuser*** permission **(sudo = "superuser do")** just for the life of the ***chown*** command. The ***-R*** option makes ***chown*** recurse thru all the sub-folders.
 
-In Linux ***root*** ownership has the highest permission level so will require ***sudo*** to alter. You can only use ***sudo*** if you belong to the ***sudo*** group.
+In Linux ***root*** ownership has the highest permission level so will require ***sudo*** to alter. You can only use ***sudo*** if you belong to the ***sudo*** group. By default the user account used to install Linux is made a member of the ***sudo*** group.
 
 ```bash
 user1@penguin:~/Projects/ng$
