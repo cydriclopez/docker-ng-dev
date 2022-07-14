@@ -47,7 +47,7 @@ docker run -it --rm \
 -w /home/node/ng angular /bin/sh
 ```
 
-We will discuss further below the previous ***docker run*** command.
+Instead of typing the previous ***docker run*** command with all its parameters we will create an alias so we can just type ***angular*** to run the Angular docker image and make available the Angular ***ng*** command for development use.
 
 ### Dockerizing Angular steps
 
