@@ -178,7 +178,7 @@ Once inside the ***docker-ng-dev/docker*** folder build the Angular image using 
 :docker build -f angular.dockerfile -t angular .
 ```
 
-Note that there is a "dot" or a period "." at the end of this command. The period "." gives the current folder as context for the docker command. It tells ***docker build*** command where to find the docker file ***angular.dockerfile***. Without the "-f" it looks for the default ***Dockerfile*** file. The "-t" names the docker image so when we type the command ***docker images*** it lists the created image as "angular".
+Note that there is a "dot" or a period "." at the end of this command. The period "." gives the current folder as context for the ***docker build*** command. It tells ***docker build*** where to find the docker file ***angular.dockerfile***. Without the "-f" it looks for the default ***Dockerfile*** file. The "-t" names the docker target image so when we type the command ***docker images*** it lists the created image as "angular".
 ```
 :docker images
 REPOSITORY   TAG            IMAGE ID       CREATED        SIZE
