@@ -239,13 +239,11 @@ This is how it looks like in my code editor:<br/>
 
 ### 5. Save and reload your ~/.bashrc file
 
-After you have inserted the alias command in your ***~/.bashrc*** file save it, and then reload it using the command:
+After you have inserted the alias command in your ***~/.bashrc*** file save it, and then reload it using the ***source ~/.bashrc*** command:
 
 ```
-:. ~/.bashrc
+:source ~/.bashrc
 ```
-
-This command starts with a period "." <ins>**followed by a space**</ins> then ***~/bashrc***
 
 Remember, as I mentioned before, the colon ":" is part of the command line prompt. You do not type it.
 
@@ -256,7 +254,7 @@ After your ***~/.bashrc*** reloads, then the command ***angular*** will be avail
 /home/node/ng #
 ```
 
-Note that the command-line prompt has changed. This signifies that you have left your localhost PC environment and you are now inside the Angular-Node Docker container. ***In Linux the hashtag or pound character prompt signifies you have root superpowers so be very careful. You have complete absolute control within that session. Mistakes can be damaging.*** You are in a virtual container session but you can affect the host system files.
+Note that the command-line prompt has changed. This signifies that you have left your local host PC environment and you are now inside the Angular-Node Docker container. ***In Linux the hashtag or pound character prompt signifies you have root superpowers so be very careful. You have complete absolute control within that session. Mistakes can be damaging.*** You are in a virtual container session but you can affect the host system files.
 
 Docker and other alternative systems have addressed this vulnerability by running the container in rootless mode.
 
