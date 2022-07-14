@@ -159,7 +159,7 @@ Once inside the ***docker-ng-dev/docker*** folder build the Angular image using 
 :docker build -f angular.dockerfile -t angular .
 ```
 
-Note that there is a "dot" or a period "." at the end of this command. The period "." gives the current folder as context for the docker command. It tells docker where to find the docker file ***angular.dockerfile***. Without the "-f" it looks for the default ***Dockerfile*** file. The "-t" names the docker image. So when we type the command "docker images" it lists the created image as "angular".
+Note that there is a "dot" or a period "." at the end of this command. The period "." gives the current folder as context for the docker command. It tells ***docker build*** command where to find the docker file ***angular.dockerfile***. Without the "-f" it looks for the default ***Dockerfile*** file. The "-t" names the docker image so when we type the command ***docker images*** it lists the created image as "angular".
 ```
 :docker images
 REPOSITORY   TAG            IMAGE ID       CREATED        SIZE
@@ -169,7 +169,7 @@ node         14.18-alpine   194cd0d85d8a   5 months ago   118MB
 ```
 Note that the ***angular*** and ***node*** entries were added after the ***docker build*** command.
 
-That ***postgres*** image entry is the subject of the next tutorial [***Dockerizing your Postgresql dev environment***](https://github.com/cydriclopez/docker-pg-dev).
+That ***postgres*** image entry is the subject of the next tutorial [***Dockerize your Postgresql dev environment***](https://github.com/cydriclopez/docker-pg-dev).
 
 
 ### 3. Create your main Angular project folder
@@ -204,7 +204,7 @@ alias angular='docker run -it --rm \
 
 This is a one-liner command that has been separated with the bash continuing character "\\" to make it easier to read.
 
-The ***-it*** option keeps ***docker run*** interactive. The ***--rm*** option automatically removes the container when it exits. This means that when inside the Docker container command prompt terminal ***/bin/sh***, typing ***exit*** ends the terminal session then Docker removes the running container from memory. The angular image remains on disk ready to run again but its running instance which is the container was effectively cleared from memory.
+The ***-it*** option keeps ***docker run*** interactive. The ***--rm*** option automatically removes the container when it exits. This means that when inside the Docker container command prompt terminal program ***/bin/sh***, typing ***exit*** ends the terminal session then Docker removes the running container from memory. The angular image remains on disk ready to run again but its running instance, which is the container, was effectively cleared from memory.
 
 This alias that runs the ***docker run*** command has more parameters that can be clarified by the following table.
 
