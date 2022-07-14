@@ -13,7 +13,7 @@ Angular is a [Nodejs](https://nodejs.org/en/) project. Nodejs is required to run
 
 Node or Nodejs are often interchanged. Node.js is the project site where as Node is the software package for the JavaScript runtime built on Chrome's V8 JavaScript engine. There is now the [Deno project](https://deno.land/) for running JavaScript and TypeScript (natively with no transpiling).
 
-In Angular code is written in [TypeScript](https://angular.io/guide/typescript-configuration#typescript-configuration) that is then transpiled into JavaScript for running in the browser.
+In Angular code is written in [TypeScript](https://angular.io/guide/typescript-configuration#typescript-configuration) that is then transpiled into JavaScript for running in the browser. The Angular transpiler process is loosely termed as ***compiler***.
 
 The Angular compiler generates static files in the folder ***dist/project-name*** which when hosted in a web server is all that is needed to run the app in the browser. Data communication is via JSON API, WebSocket, or gRPC. Angular these days can also use [Server-side Rendering](https://angular.io/guide/universal).
 
