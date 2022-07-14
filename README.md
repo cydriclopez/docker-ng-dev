@@ -39,6 +39,16 @@ Docker is also an application development technology. These days it makes a lot 
 
 **The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.**
 
+For example is the following ***docker run*** command:
+```bash
+docker run -it --rm \
+-p 4200:4200 -p 9876:9876 \
+-v /home/$USER/Projects/ng:/home/node/ng \
+-w /home/node/ng angular /bin/sh
+```
+
+We will discuss further below the previous ***docker run*** command.
+
 ### Dockerizing Angular steps
 
 The way I prefer to use Docker for Angular development purposes is to keep the image lean. To make it work takes 5 steps:
