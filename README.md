@@ -5,10 +5,27 @@
 
 > ***This tutorial requires some knowledge in Linux, Docker, Git, and Angular.***
 
+### Why Angular?
+
+I have gotten to like Angular for PWA app dev. In Angular to include the scaffolding for a PWA project just takes [one command](https://web.dev/creating-pwa-with-angular-cli/). Here is [more info](https://angular.io/guide/service-worker-intro) on Angular PWA. Angular is a [Single Page App](https://en.wikipedia.org/wiki/Single-page_application) (SPA) web framework that has the semblance of the classic fat-client app but using web technology (HTML, JavaScript, & CSS).
+
+Angular is a [Nodejs](https://nodejs.org/en/) project. Nodejs is required to run Angular for development. Installing and running Nodejs is made more convenient using Docker.
+
+The static files generated in the folder ***dist/project-name*** and hosted in a web server is all that is needed to run the app. Data communication is via JSON API, WebSocket, or gRPC. Angular these days can also use [Server-side Rendering](https://angular.io/guide/universal).
+
+This tutorial is mostly about 1.) creating the Angular docker image and, 2.) adding an alias command in the ***~/.bashrc*** file. It is a 2-step process that I stretched into 5 steps for clarity.
+
+The steps outlined here are simpler than painstakingly manually [installing Node from here](https://github.com/nodejs/help/wiki/Installation), followed by [installing Angular from here](https://angular.io/guide/setup-local#install-the-angular-cli).
+
+You can adapt these steps to use several versions of Nodejs for your different Nodejs/React/Angular projects.
+
+### Docker intro
 
 VMs and containers have been [around for a while](https://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016). They predate [Docker](https://www.docker.com/). There are other Docker [alternative projects](https://www.containiq.com/post/docker-alternatives). Most are [OCI compliant](https://opencontainers.org/) projects.
 
 Early on, [Linux](https://www.linuxfoundation.org/) got to have the foundational code pieces in namespace, cgroup, unionfs, and chroot to make VMs and containers possible. In Linux there is no need to use a VM to run Docker. [Docker Compose](https://docs.docker.com/compose/) is a tool for conveniently wiring together multi-container Docker applications using a YAML text file. [LXD](https://linuxcontainers.org/), [Kubernetes](https://kubernetes.io/), [Swarm](https://docs.docker.com/engine/swarm/), and etc. extend containers into nodes spanning multiple servers. This area in IT is a fast moving train that is quite fun to ride.
+
+### Docker for deployment
 
 Docker is an application deployment technology. With Docker you can choose a pre-built image then copy your application into this image, including all the codes, libraries and dependencies that your application needs. In Docker you script, using a Dockerfile, the build process of your application image. A container is the running instance of the docker image. Checkout the [Docker documentation](https://docs.docker.com/). It is quite comprehensive.
 
@@ -16,11 +33,13 @@ I recommend <ins>***using only Docker Official Images***</ins> to keep away from
 
 The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download. This is the docker hub page for [Node](https://hub.docker.com/_/node). Node is the foundation code to run Angular.
 
-This tutorial is mostly about creating the Angular docker image and adding an alias command in the ***~/.bashrc*** file. It is actually a 2 step process I stretched into 5 for clarity. I would like to think it is a lot simpler than painstakingly manually [installing Node from here](https://github.com/nodejs/help/wiki/Installation), followed by [installing Angular from here](https://angular.io/guide/setup-local#install-the-angular-cli).
+### Docker for development
 
 Docker is also an application development technology. These days it makes a lot of sense to install software dev tools into a Docker image. The nice thing about it is that when a new version of the tool comes out, you can just create an image of this new version.
 
 **The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.**
+
+### Dockerizing Angular steps
 
 The way I prefer to use Docker for Angular development purposes is to keep the image lean. To make it work takes 5 steps:
 1. Git clone this project, then type ***cd docker-ng-dev/docker***
@@ -31,6 +50,8 @@ The way I prefer to use Docker for Angular development purposes is to keep the i
 
 After step 5 you can run the alias command: ***angular***<br/>
 You will now be in the Angular-Node container. To exit type ***exit***.
+
+### The Dockerfile
 
 The docker file ***docker/angular.dockerfile*** is fully commented.
 ```dockerfile
@@ -106,6 +127,8 @@ user1@penguin:~$
 :sudo groupadd docker
 :sudo usermod -aG docker $USER
 ```
+
+You can also read on my humble [laptop setup](../docker-pg-dev/README.md#my-laptop-setup).
 
 Ok now that we have some clarity, let's get right to it. 😊
 
