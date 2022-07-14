@@ -53,15 +53,17 @@ docker run -it --rm \
 
 Instead of typing the previous ***docker run*** command with all its parameters we will create an alias so we can just type ***angular*** to run the Angular docker image and make available the Angular ***ng*** command for development use.
 
+Later we will talk more about the preceding ***docker run*** command and its parameters.
+
 ### Docker for development using VS Code
 
-It is now also possible to encapsulate your whole complete development environment in a Docker container and then use a VS Code plugin to reach into this Docker container.
+It is now also possible to encapsulate your whole complete development environment in a Docker container and then use a VS Code plugin to reach within this Docker container to edit code inside.
 
-I tried this setup before and have found it constricting. I do not want to be forced to only use VS Code in development. Once in a while, out of a whim, I still enjoy Vim.
+I tried this setup before and have found it constricting. I do not want to be forced to only use VS Code in development. Once in a while, out of a whim, I still enjoy Vim. But Vim can easily function in this setup, even without any special plugin, but that is another topic.
 
 You can try and investigate this setup and see if you like it.
 
-### Dockerizing Angular steps
+### Dockerize Angular steps
 
 The way I prefer to use Docker for Angular development purposes is to keep the image lean. To make it work takes 5 steps:
 1. Git clone this project, then type ***cd docker-ng-dev/docker***
@@ -151,7 +153,11 @@ user1@penguin:~$
 :sudo usermod -aG docker $USER
 ```
 
-You can also read on my humble <a href="https://github.com/cydriclopez/docker-pg-dev#my-laptop-setup">laptop setup</a>
+### My laptop setup
+
+***No I'm not endorsing or recommending it*** but for years now my choice work laptop is the [***Pixelbook Go***](https://store.google.com/us/product/pixelbook_go?hl=en-US). It has been out since 2019 but it is still a really nice useful development tool. I have the i5 16Gig RAM 128GB SSD model. Now there are way nicer laptops out there but I have been happy with this one and for the moment would not trade it for anything else out there. At the current price point of $650 bucks, now this thing is a steal! It runs an instance of [Debian](https://www.debian.org/) GNU/Linux 11 (bullseye) in a [LXD VM](https://linuxcontainers.org/lxd/) inside [Crostini](https://chromeos.dev/en/linux) which itself is based on Linux's built-in [KVM VM tool](https://www.linux-kvm.org/page/Main_Page). [Chrome OS](https://www.google.com/chromebook/chrome-os/) itself is based on the [Gentoo Linux distribution](https://www.gentoo.org/).
+
+There is a lot of energy and excitement in the whole [Linux ecosystem](https://www.linuxfoundation.org/). The [Open Source Initiative](https://opensource.org/) was created to protect the open source intellectual property and ensure the whole ecosystem thrives.
 
 Ok now that we have some clarity, let's get right to it. 😊
 
