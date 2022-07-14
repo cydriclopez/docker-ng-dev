@@ -7,11 +7,15 @@
 
 ### Why Angular?
 
-I have gotten to like Angular for PWA app dev. In Angular to include the scaffolding for a PWA project just takes [one command](https://web.dev/creating-pwa-with-angular-cli/). Here is [more info](https://angular.io/guide/service-worker-intro) on Angular PWA. Angular is a [Single Page App](https://en.wikipedia.org/wiki/Single-page_application) (SPA) web framework that has the semblance of the classic fat-client app but using web technology (HTML, JavaScript, & CSS).
+I have gotten to like Angular for PWA app dev. In Angular to include the scaffolding code for a PWA project just takes [one command](https://web.dev/creating-pwa-with-angular-cli/). Here is [more info](https://angular.io/guide/service-worker-intro) on Angular PWA. Angular is a [Single Page App](https://en.wikipedia.org/wiki/Single-page_application) (SPA) web framework that has the semblance of the classic fat-client app but using web technology (HTML, JavaScript, & CSS).
 
 Angular is a [Nodejs](https://nodejs.org/en/) project. Nodejs is required to run Angular for development. Installing and running Nodejs is made more convenient using Docker.
 
-The static files generated in the folder ***dist/project-name*** and hosted in a web server is all that is needed to run the app. Data communication is via JSON API, WebSocket, or gRPC. Angular these days can also use [Server-side Rendering](https://angular.io/guide/universal).
+Node or Nodejs are often interchanged. Node.js is the project site where as Node is the software package for the JavaScript runtime built on Chrome's V8 JavaScript engine. There is now the [Deno project](https://deno.land/) for running JavaScript and TypeScript (natively with no transpiling).
+
+In Angular code is written in [TypeScript](https://angular.io/guide/typescript-configuration#typescript-configuration) that is then transpiled into JavaScript for running in the browser.
+
+The Angular compiler generates static files in the folder ***dist/project-name*** which when hosted in a web server is all that is needed to run the app in the browser. Data communication is via JSON API, WebSocket, or gRPC. Angular these days can also use [Server-side Rendering](https://angular.io/guide/universal).
 
 This tutorial is mostly about 1.) creating the Angular docker image and, 2.) adding an alias command in the ***~/.bashrc*** file. It is a 2-step process that I stretched into 5 steps for clarity.
 
