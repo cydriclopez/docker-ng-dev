@@ -35,7 +35,7 @@ Docker is an application deployment technology. With Docker you can choose a pre
 
 I recommend <ins>***using only Docker Official Images***</ins> to keep away from malicious codes and vulnerabilities. You can also use images from companies you trust.
 
-The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download. This is the docker hub page for [Node](https://hub.docker.com/_/node). Node is the foundation code to run Angular.
+The Docker official repository of images is located in [<ins>hub.docker.com</ins>](https://hub.docker.com/). Here you can search for the docker image you can download. This is the docker hub page for [Node](https://hub.docker.com/_/node). Node is the foundation code to run Angular for development.
 
 ### Docker for development
 
@@ -52,6 +52,14 @@ docker run -it --rm \
 ```
 
 Instead of typing the previous ***docker run*** command with all its parameters we will create an alias so we can just type ***angular*** to run the Angular docker image and make available the Angular ***ng*** command for development use.
+
+### Docker for development using VS Code
+
+It is now also possible to encapsulate your whole complete development environment in a Docker container and then use a VS Code plugin to reach into this Docker container.
+
+I tried this setup before and have found it constricting. I do not want to be forced to only use VS Code in development. Once in a while, out of a whim, I still enjoy Vim.
+
+You can try and investigate this setup and see if you like it.
 
 ### Dockerizing Angular steps
 
