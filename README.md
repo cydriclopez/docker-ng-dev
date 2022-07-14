@@ -128,7 +128,7 @@ user1@penguin:~$
 :sudo usermod -aG docker $USER
 ```
 
-You can also read on my humble [laptop setup](../docker-pg-dev/README.md#my-laptop-setup).
+You can also read on my humble [laptop setup](https://github.com/cydriclopez/docker-pg-dev#my-laptop-setup).
 
 Ok now that we have some clarity, let's get right to it. 😊
 
