@@ -100,7 +100,8 @@ The docker file ***docker/angular.dockerfile*** is fully commented.
 # -v /home/$USER/Projects/ng:/home/node/ng \
 # -w /home/node/ng angular /bin/sh'
 
-# 5. Then reload ~/.bashrc by entering command: . ~/.bashrc
+# 5. Then reload ~/.bashrc by entering command:
+# source ~/.bashrc
 
 # After step 5 you can then run the alias command: angular
 # You will now be in the Angular-Node container. To exit type: exit
