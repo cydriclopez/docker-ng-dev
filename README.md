@@ -193,7 +193,7 @@ That ***postgres*** image entry is the subject of the next tutorial [***Dockeriz
 
 ### 3. Create your main Angular project folder
 
-Create your main Angular project working folder. This folder can be anywhere as long as it jives with the alias command in the next step. In this example the main Angular project folder is ***~/Projects/ng***
+Create your main Angular project working folder. This folder can be anywhere as long as it agrees with the volume mapping "-v" parameter in the next step. In this example the main Angular project folder is ***~/Projects/ng***
 So we type:
 
 ```
