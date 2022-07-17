@@ -7,7 +7,9 @@
 
 ### Why Angular?
 
-I have gotten to like Angular for PWA app dev. In Angular to include the scaffolding code for a PWA project just takes [one command](https://web.dev/creating-pwa-with-angular-cli/). Here is [more info](https://angular.io/guide/service-worker-intro) on Angular PWA. Angular is a [Single Page App](https://en.wikipedia.org/wiki/Single-page_application) (SPA) web framework that has the semblance of the classic fat-client app but using web technology (HTML, JavaScript, & CSS).
+I have gotten to like Angular for PWA app dev. In Angular to include the scaffolding code for a PWA project just takes [one command](https://web.dev/creating-pwa-with-angular-cli/). Here is [more info](https://angular.io/guide/service-worker-intro) on Angular PWA. Angular is a [Single Page App](https://en.wikipedia.org/wiki/Single-page_application) (SPA) web framework that has the semblance of the classic fat-client app but uses web technology (HTML, JavaScript, & CSS). And code in Angular is written in TypeScript that once you get used to it, it gets hard to go back to plain JavaScript.
+
+Angular has built-in formalizations of stuff like Components, Directives, Dependency Injection, Singleton Service, PWA web service worker, RxJS Observables, Jasmine-Karma testing, and etc. These are all built-in baked into Angular. In other frameworks they may be provided by separate and disparate 3rd-party library.
 
 Angular is a [Nodejs](https://nodejs.org/en/) project. Nodejs is required to run Angular for development. Installing and running Nodejs is made more convenient using Docker.
 
