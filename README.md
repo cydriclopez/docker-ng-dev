@@ -13,7 +13,9 @@ Angular has built-in formalizations of stuff like Components, Directives, Depend
 
 Angular is a [Nodejs](https://nodejs.org/en/) project. Nodejs is required to run Angular for development. Installing and running Nodejs is made more convenient using Docker.
 
-Node or Nodejs are often interchanged. Node.js is the project site whereas Node is the software package for the JavaScript runtime built on Chrome's V8 JavaScript engine. There is now the [Deno project](https://deno.land/) for running JavaScript and TypeScript (natively with no transpiling).
+Node or Nodejs are often interchanged. Node.js is the project site whereas Node is the software package for the JavaScript runtime built on Chrome's V8 JavaScript engine.
+
+There is now the [Deno](https://deno.land/) project written in the [Rust](https://www.rust-lang.org/) language. I also have just learned from a friend about the [Bun](https://bun.sh/) project written in the [Zig](https://ziglang.org/) language. There seems to be a lot of energy and excitement in the JavaScript/TypeScript/Wasm runtime space. It is going to be fun!
 
 In Angular code is written in [TypeScript](https://angular.io/guide/typescript-configuration#typescript-configuration) that is then transpiled into JavaScript for running in the browser. The Angular transpiler process is loosely termed as ***compiler***.
 
