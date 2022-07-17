@@ -47,13 +47,15 @@ Docker is also an application development technology. These days it makes a lot 
 
 **The key to using Docker in development is to bind mount your main project folder into a folder in the Docker image using the --volume or -v option. Once you have this mapping done then use the --workdir or -w option to declare this folder inside the Docker image as the working folder.**
 
-For example is the following ***docker run*** command:
+For example this is our ***docker run*** command:
 ```bash
 docker run -it --rm \
 -p 4200:4200 -p 9876:9876 \
 -v /home/$USER/Projects/ng:/home/node/ng \
 -w /home/node/ng angular /bin/sh
 ```
+
+The parameters in the above ***docker run*** command can be included in the Dockerfile ***angular.dockerfile*** but I like the flexibility of adding them in an alias command in my ***~/.bashrc*** file. Note that ***docker run*** options take precedence over anything in the Dockerfile; but some options (like -v/VOLUME) are [additive](https://forums.docker.com/t/does-docker-run-v-or-dockerfile-volume-take-precedence/22681).
 
 Instead of typing the previous ***docker run*** command with all its parameters we will create an alias so we can just type ***angular*** to run the Angular docker image and make available the Angular ***ng*** command for development use.
 
